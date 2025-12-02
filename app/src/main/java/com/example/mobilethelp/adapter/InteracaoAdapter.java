@@ -10,7 +10,7 @@ import com.example.mobilethelp.R;
 import com.example.mobilethelp.model.Interacao;
 import java.util.List;
 
-public class InteractionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class InteracaoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private static final int VIEW_TYPE_SENT = 1; // Enviado pelo "User"
     private static final int VIEW_TYPE_RECEIVED = 2; // Recebido do "Support" ou outro
@@ -18,8 +18,8 @@ public class InteractionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
     private List<Interacao> interacoes;
 
-    // O construtor que estava faltando
-    public InteractionAdapter(List<Interacao> interacoes) {
+    // O construtor correto que estava faltando
+    public InteracaoAdapter(List<Interacao> interacoes) {
         this.interacoes = interacoes;
     }
 

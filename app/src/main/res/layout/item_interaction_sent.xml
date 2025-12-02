@@ -19,6 +19,17 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <!-- Este TextView estava faltando no layout recebido, mas o adapter o procura -->
+            <TextView
+                android:id="@+id/textViewAuthor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="User"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:visibility="gone" />
+
             <TextView
                 android:id="@+id/textViewMessage"
                 android:layout_width="wrap_content"

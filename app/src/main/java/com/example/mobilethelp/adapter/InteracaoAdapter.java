@@ -12,20 +12,21 @@ import java.util.List;
 
 public class InteracaoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private static final int VIEW_TYPE_SENT = 1; // Enviado pelo "User"
-    private static final int VIEW_TYPE_RECEIVED = 2; // Recebido do "Support" ou outro
-    private final String currentUserAuthorName = "User";
+    private static final int VIEW_TYPE_SENT = 1;
+    private static final int VIEW_TYPE_RECEIVED = 2;
 
     private List<Interacao> interacoes;
+    private final Integer currentUserId;
 
-    // O construtor correto que estava faltando
-    public InteracaoAdapter(List<Interacao> interacoes) {
+    public InteracaoAdapter(List<Interacao> interacoes, Integer currentUserId) {
         this.interacoes = interacoes;
+        this.currentUserId = currentUserId;
     }
 
     @Override
     public int getItemViewType(int position) {
-        if (interacoes.get(position).getAutor().equals(currentUserAuthorName)) {
+        // Compara o ID do usuário da interação com o ID do usuário logado
+        if (interacoes.get(position).getIdUsuario().equals(currentUserId)) {
             return VIEW_TYPE_SENT;
         } else {
             return VIEW_TYPE_RECEIVED;
@@ -59,7 +60,6 @@ public class InteracaoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         return interacoes.size();
     }
 
-    // ViewHolders internos
     private static class SentMessageViewHolder extends RecyclerView.ViewHolder {
         TextView textViewMessage, textViewTimestamp;
         SentMessageViewHolder(View itemView) {
@@ -82,7 +82,8 @@ public class InteracaoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             textViewTimestamp = itemView.findViewById(R.id.textViewTimestamp);
         }
         void bind(Interacao interacao) {
-            textViewAuthor.setText(interacao.getAutor());
+            // Como não temos mais o nome do autor, podemos esconder o campo ou mostrar o ID
+            textViewAuthor.setText("Usuário: " + interacao.getIdUsuario());
             textViewMessage.setText(interacao.getMensagem());
             textViewTimestamp.setText(interacao.getDataHora());
         }

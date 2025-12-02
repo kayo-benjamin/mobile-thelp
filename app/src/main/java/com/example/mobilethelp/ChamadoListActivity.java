@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import com.example.mobilethelp.adapter.TicketAdapter;
+import com.example.mobilethelp.adapter.ChamadoAdapter;
 import com.example.mobilethelp.interfaces.ApiClient;
 import com.example.mobilethelp.model.Chamado;
 import com.example.mobilethelp.service.ChamadoService;
@@ -20,30 +20,29 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class TicketListActivity extends AppCompatActivity {
+public class ChamadoListActivity extends AppCompatActivity {
 
-    private RecyclerView recyclerViewTickets;
-    private TicketAdapter ticketAdapter;
+    private RecyclerView recyclerViewChamados;
+    private ChamadoAdapter chamadoAdapter;
     private List<Chamado> chamadoList = new ArrayList<>();
     private ChamadoService chamadoService;
-    private static final String TAG = "TicketListActivity";
+    private static final String TAG = "ChamadoListActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ticket_list);
+        setContentView(R.layout.activity_chamado_list); // Novo layout
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         chamadoService = ApiClient.getClient(this).create(ChamadoService.class);
-        recyclerViewTickets = findViewById(R.id.recyclerViewTickets);
+        recyclerViewChamados = findViewById(R.id.recyclerViewChamados);
         setupRecyclerView();
 
-        FloatingActionButton fabAddTicket = findViewById(R.id.fabAddTicket);
-        fabAddTicket.setOnClickListener(v -> {
-            // Abre a tela de criação
-            Intent intent = new Intent(TicketListActivity.this, CreateTicketActivity.class);
+        FloatingActionButton fabAddChamado = findViewById(R.id.fabAddChamado);
+        fabAddChamado.setOnClickListener(v -> {
+            Intent intent = new Intent(ChamadoListActivity.this, CreateChamadoActivity.class);
             startActivity(intent);
         });
     }
@@ -51,18 +50,17 @@ public class TicketListActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        loadChamados(); // Recarrega a lista sempre que a tela se torna visível
+        loadChamados();
     }
 
     private void setupRecyclerView() {
-        ticketAdapter = new TicketAdapter(chamadoList, chamado -> {
-            // Ação de clique: abrir a tela de detalhes
-            Intent intent = new Intent(TicketListActivity.this, TicketActivity.class);
+        chamadoAdapter = new ChamadoAdapter(chamadoList, chamado -> {
+            Intent intent = new Intent(ChamadoListActivity.this, ChamadoDetailActivity.class);
             intent.putExtra("CHAMADO_ID", chamado.getId());
             startActivity(intent);
         });
-        recyclerViewTickets.setLayoutManager(new LinearLayoutManager(this));
-        recyclerViewTickets.setAdapter(ticketAdapter);
+        recyclerViewChamados.setLayoutManager(new LinearLayoutManager(this));
+        recyclerViewChamados.setAdapter(chamadoAdapter);
     }
 
     private void loadChamados() {
@@ -73,17 +71,15 @@ public class TicketListActivity extends AppCompatActivity {
                 if (response.isSuccessful() && response.body() != null) {
                     chamadoList.clear();
                     chamadoList.addAll(response.body());
-                    ticketAdapter.notifyDataSetChanged();
+                    chamadoAdapter.notifyDataSetChanged();
                 } else {
-                    Toast.makeText(TicketListActivity.this, "Falha ao carregar chamados.", Toast.LENGTH_SHORT).show();
-                    Log.e(TAG, "Erro ao carregar chamados, código: " + response.code());
+                    Toast.makeText(ChamadoListActivity.this, "Falha ao carregar chamados.", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(@NonNull Call<List<Chamado>> call, @NonNull Throwable t) {
-                Toast.makeText(TicketListActivity.this, "Erro de rede: " + t.getMessage(), Toast.LENGTH_SHORT).show();
-                Log.e(TAG, "Falha de rede ao carregar chamados", t);
+                Toast.makeText(ChamadoListActivity.this, "Erro de rede: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }

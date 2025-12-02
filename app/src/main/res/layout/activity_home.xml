@@ -8,14 +8,14 @@
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        android:layout_height="wrap_content">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
+            app:title="MobileThelp"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
     </com.google.android.material.appbar.AppBarLayout>
@@ -24,67 +24,38 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        android:gravity="center_vertical"
         android:padding="16dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cardViewTickets"
+            android:id="@+id/cardViewMyChamados"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            app:cardCornerRadius="8dp"
-            app:cardElevation="4dp">
+            android:layout_margin="8dp">
 
-            <LinearLayout
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="16dp">
-
-                <ImageView
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
-                    android:layout_gravity="center_horizontal"
-                    android:src="@drawable/ic_ticket" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="8dp"
-                    android:text="Tickets"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Large" />
-            </LinearLayout>
+                android:text="Meus Chamados"
+                android:gravity="center"
+                android:padding="32dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
         </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cardViewChat"
+            android:id="@+id/cardViewCreateChamado"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            app:cardCornerRadius="8dp"
-            app:cardElevation="4dp">
+            android:layout_margin="8dp">
 
-            <LinearLayout
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="16dp">
-
-                <ImageView
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
-                    android:layout_gravity="center_horizontal"
-                    android:src="@drawable/ic_chat" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="8dp"
-                    android:text="Chat"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Large" />
-            </LinearLayout>
+                android:text="Criar Chamado"
+                android:gravity="center"
+                android:padding="32dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
         </com.google.android.material.card.MaterialCardView>
 
     </LinearLayout>

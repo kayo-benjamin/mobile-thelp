@@ -22,19 +22,19 @@ public class HomeActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        MaterialCardView cardViewTickets = findViewById(R.id.cardViewTickets);
-        MaterialCardView cardViewChat = findViewById(R.id.cardViewChat);
+        MaterialCardView cardViewMyChamados = findViewById(R.id.cardViewMyChamados);
+        MaterialCardView cardViewCreateChamado = findViewById(R.id.cardViewCreateChamado);
         FloatingActionButton fabLogout = findViewById(R.id.fabLogout);
 
-        // Ação para o card de Tickets - abre o formulário de criação
-        cardViewTickets.setOnClickListener(v -> {
-            Intent intent = new Intent(HomeActivity.this, CreateTicketActivity.class);
+        // Ação para o card "Meus Chamados" -> abre a LISTA
+        cardViewMyChamados.setOnClickListener(v -> {
+            Intent intent = new Intent(HomeActivity.this, ChamadoListActivity.class);
             startActivity(intent);
         });
 
-        // Ação para o card de Chat - também abre o formulário de criação
-        cardViewChat.setOnClickListener(v -> {
-            Intent intent = new Intent(HomeActivity.this, CreateTicketActivity.class);
+        // Ação para o card "Criar Chamado" -> abre o FORMULÁRIO
+        cardViewCreateChamado.setOnClickListener(v -> {
+            Intent intent = new Intent(HomeActivity.this, CreateChamadoActivity.class);
             startActivity(intent);
         });
 

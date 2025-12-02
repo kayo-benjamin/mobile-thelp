@@ -2,7 +2,6 @@ package com.example.mobilethelp.service;
 
 import com.example.mobilethelp.model.AddInteracaoRequest;
 import com.example.mobilethelp.model.Chamado;
-import com.example.mobilethelp.model.CreateChamadoRequest;
 import com.example.mobilethelp.model.Interacao;
 
 import java.util.List;
@@ -16,23 +15,21 @@ import retrofit2.http.Path;
 
 public interface ChamadoService {
 
-    // CREATE (Endpoint corrigido para corresponder ao backend)
-    @POST("chamados")
-    Call<Chamado> createChamado(@Body CreateChamadoRequest createChamadoRequest);
+    @POST("api/chamados")
+    Call<Chamado> createChamado(@Body Chamado chamado);
 
-    // READ (Listar todos)
-    @GET("chamados")
+    @GET("api/chamados")
     Call<List<Chamado>> getChamados();
 
-    // READ (Pegar um específico)
+    // Corrigido para Integer
     @GET("chamados/{id}")
-    Call<Chamado> getChamadoById(@Path("id") Long id);
+    Call<Chamado> getChamadoById(@Path("id") Integer id);
 
-    // UPDATE (Adicionar interação) - Verifique se este endpoint está correto no seu backend
+    // Corrigido para Integer
     @POST("chamados/{id}/interacoes")
-    Call<Interacao> addInteracao(@Path("id") Long id, @Body AddInteracaoRequest addInteracaoRequest);
+    Call<Interacao> addInteracao(@Path("id") Integer id, @Body AddInteracaoRequest addInteracaoRequest);
 
-    // UPDATE (Fechar chamado) - Verifique se este endpoint está correto no seu backend
+    // Corrigido para Integer
     @PUT("chamados/{id}/fechar")
-    Call<Chamado> fecharChamado(@Path("id") Long id);
+    Call<Chamado> fecharChamado(@Path("id") Integer id);
 }

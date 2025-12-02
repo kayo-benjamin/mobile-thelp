@@ -15,10 +15,7 @@
         android:theme="@style/Theme.MobileThelp"
         android:usesCleartextTraffic="true">
 
-        <activity
-            android:name=".SplashActivity"
-            android:exported="true"
-            android:theme="@style/Theme.MobileThelp.NoActionBar">
+        <activity android:name=".SplashActivity" android:exported="true" android:theme="@style/Theme.MobileThelp.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -28,12 +25,11 @@
         <activity android:name=".MainActivity" android:theme="@style/Theme.MobileThelp.NoActionBar" />
         <activity android:name=".RegisterActivity" android:theme="@style/Theme.MobileThelp.NoActionBar" />
         <activity android:name=".HomeActivity" android:theme="@style/Theme.MobileThelp.NoActionBar" />
-        <activity android:name=".TicketActivity" android:theme="@style/Theme.MobileThelp.NoActionBar" />
-        <activity android:name=".ChatActivity" android:theme="@style/Theme.MobileThelp.NoActionBar" />
-
-        <!-- Novas Activities -->
-        <activity android:name=".TicketListActivity" android:theme="@style/Theme.MobileThelp.NoActionBar" />
-        <activity android:name=".CreateTicketActivity" android:theme="@style/Theme.MobileThelp.NoActionBar" />
+        
+        <!-- CRUD de Chamados -->
+        <activity android:name=".ChamadoListActivity" android:theme="@style/Theme.MobileThelp.NoActionBar" />
+        <activity android:name=".CreateChamadoActivity" android:theme="@style/Theme.MobileThelp.NoActionBar" />
+        <activity android:name=".ChamadoDetailActivity" android:theme="@style/Theme.MobileThelp.NoActionBar" />
             
     </application>
 

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Primary Palette -->
+    <color name="colorPrimary">#0D47A1</color> <!-- A deep, professional blue -->
+    <color name="colorPrimaryDark">#002171</color> <!-- A darker shade for the status bar -->
+    <color name="colorPrimaryLight">#5472D3</color>
+
+    <!-- Accent Palette -->
+    <color name="colorAccent">#FFC107</color> <!-- A vibrant accent for highlights -->
+
+    <!-- Text Palette -->
+    <color name="textColorPrimary">#212121</color>
+    <color name="textColorSecondary">#757575</color>
+
+    <!-- Standard Colors -->
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <!-- Background Colors -->
+    <color name="windowBackground">#F5F5F5</color> <!-- A light gray background for a clean look -->
+    <color name="cardBackground">#FFFFFF</color>
+
+</resources>
